@@ -20,8 +20,6 @@ class MarketDataService:
         yf_symbol = symbol if ".IS" in symbol or symbol == "USDTRY" else f"{symbol}.IS"
         
         try:
-            # yfinance bazı hataları stdout'a basar, bunu engellemek zor olabilir ama
-            # temel mantıkta boş veri gelirse None dönmeliyiz.
             ticker = yf.Ticker(yf_symbol)
             
             # period="1d" son günü getirir
@@ -56,7 +54,7 @@ class MarketDataService:
             self.db.commit()
             print(f"[BİLGİ] Yeni hisse tanımlandı: {symbol}")
 
-        # 2. Mevcut Veri Sayısını Kontrol Et (Akıllı Güncelleme)
+        # 2. Mevcut Veri Sayısını Kontrol Et 
         existing_count = self.db.query(PriceHistory).filter(
             PriceHistory.security_id == security.id
         ).count()

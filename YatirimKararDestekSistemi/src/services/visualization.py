@@ -182,7 +182,7 @@ class PortfolioVisualizationService:
         plt.tight_layout()
         return self.save_plot(fig, "individual_stocks.png")
 
-    # --- 5. KORELASYON MATRİSİ (PROFESYONEL DOKUNUŞ) ---
+    # --- 5. KORELASYON MATRİSİ  ---
     def plot_correlation_matrix(self, user_id):
         """
         Hisseler birbiriyle ne kadar ilişkili?

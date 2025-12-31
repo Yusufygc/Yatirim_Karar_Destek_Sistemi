@@ -66,8 +66,6 @@ class ModelExplainer:
 
     def plot_summary(self):
         """Genel model davranışını (Feature Importance) çizer."""
-        # Not: Bu grafik GUI'de gösterilmek üzere byte olarak döndürülebilir.
-        # Şimdilik sadece kaydediyoruz veya gösteriyoruz.
         shap_values = self.explainer.shap_values(self.X_train)
         plt.figure()
         shap.summary_plot(shap_values, self.X_train, show=False)

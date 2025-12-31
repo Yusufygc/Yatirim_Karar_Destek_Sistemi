@@ -37,7 +37,7 @@ class AnalysisService:
                 ai_signal=result['signal']
             )
             
-            # 3. VERİTABANI KONTROLÜ (KRİTİK DÜZELTME BURADA)
+            # 3. VERİTABANI KONTROLÜ 
             # Hissenin veritabanında olup olmadığına bakıyoruz.
             security = self.db.query(Security).filter(Security.symbol == symbol).first()
             
@@ -56,7 +56,7 @@ class AnalysisService:
             else:
                 # EĞER HİSSE SİSTEMDE YOKSA: Hiçbir şey yapma!
                 # Ne Security tablosuna ekle, ne de Prediction tablosuna.
-                # Sadece sonucu kullanıcıya gösterip geçeceğiz.
+                # Sadece sonucu kullanıcıya göster
                 print(f"ℹ️ Bilgi: {symbol} portföy/takip listenizde olmadığı için veritabanına kaydedilmedi.")
 
             # 4. Sonuçları Birleştir ve Döndür

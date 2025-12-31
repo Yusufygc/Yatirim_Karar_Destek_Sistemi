@@ -38,9 +38,9 @@ class PortfolioAnalyticsService:
             market_val = qty * current_price
             cost_basis = qty * avg_cost
             
-            # --- YENİ EKLENEN KISIM: NOMİNAL (TL) KAR/ZARAR ---
+            # ---  NOMİNAL (TL) KAR/ZARAR ---
             nominal_pl = market_val - cost_basis 
-            # --------------------------------------------------
+            
 
             pct_pl = ((current_price - avg_cost) / avg_cost) * 100 if avg_cost > 0 else 0.0
             
@@ -61,7 +61,6 @@ class PortfolioAnalyticsService:
         total_nominal_pl = total_current_value - total_cost_basis
         total_pct_pl = (total_nominal_pl / total_cost_basis * 100) if total_cost_basis > 0 else 0.0
 
-        # ... (Ekstremler hesaplama kısmı aynı kalabilir) ...
         extremes = self._calculate_extremes(positions)
 
         return {
@@ -233,11 +232,8 @@ class PortfolioAnalyticsService:
                 "pl_pct": item["pct_pl"],
                 "nominal_pl": item["nominal_pl"] # Menüde göstermek için ekledik
             }
-
-        # --- DÜZELTME BURADA ---
-        # Eskiden: key=lambda x: x["pct_pl"] (Yüzdeye göreydi)
-        # Yeniden: key=lambda x: x["nominal_pl"] (Cebimize giren paraya göre)
         
+        # 2. Çoklu hisse kontrolü
         sorted_holdings = sorted(holdings, key=lambda x: x["nominal_pl"], reverse=True)
         
         best = sorted_holdings[0]  # En çok TL kazandıran

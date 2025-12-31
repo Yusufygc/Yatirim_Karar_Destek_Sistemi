@@ -76,11 +76,11 @@ class TradeService:
                 # Satışta sadece adet düşer
                 holding.quantity = float(holding.quantity) - quantity
                 
-                # --- YENİ EKLENEN KISIM: SİLME MANTIĞI ---
+             
                 # Eğer kalan miktar 0 (veya küsurat hatasıyla 0'a çok yakınsa) kaydı sil.
                 if holding.quantity <= 0.0001:
                     self.db.delete(holding) # Tablodan tamamen uçur
-                # -----------------------------------------
+             
 
             self.db.commit()
             return {"status": "success", "message": f"{symbol} işlemi başarıyla kaydedildi."}
