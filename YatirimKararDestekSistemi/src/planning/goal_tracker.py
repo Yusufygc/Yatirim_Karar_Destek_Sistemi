@@ -72,12 +72,19 @@ class GoalTracker:
             remaining = goal.target_amount - goal.current_amount
             # Kalan ay sayısı
             today = date.today()
+            # --- YENİ DÜZELTİLMİŞ KOD ---
             if goal.deadline <= today:
+                # Vade bugün veya geçmişte ise, kalan süre 0 aydır.
                 months_left = 0
             else:
                 delta = relativedelta(goal.deadline, today)
                 months_left = delta.years * 12 + delta.months
-                if months_left == 0: months_left = 1 # 0'a bölünme hatasını önle
+            
+            # DÜZELTME: Sıfıra bölünme kontrolünü if/else bloklarının DIŞINA taşıyoruz.
+            # Böylece vade geçmiş olsa bile (0 ay), bölme işlemi için bunu 1 kabul edip
+            # "kalan tutarın tamamını hemen ödemelisin" mantığını uyguluyoruz.
+            if months_left <= 0:
+                months_left = 1 
             
             required_monthly = remaining / months_left
             cumulative_monthly_need += required_monthly
