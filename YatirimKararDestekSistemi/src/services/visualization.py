@@ -118,10 +118,6 @@ class PortfolioVisualizationService:
 
     # --- 3. TEK GRAFİKTE TÜM HİSSELER (NORMALIZE EDİLMİŞ) ---
     def plot_combined_performance(self, user_id, days=90):
-        """
-        Profesyonel Teknik: Tüm hisseleri aynı başlangıç noktasına (100) endeksler.
-        Böylece 10 TL'lik hisse ile 1000 TL'lik hissenin performansı kıyaslanabilir.
-        """
         df_port = self._get_portfolio_data(user_id)
         if df_port.empty: return None
         
@@ -130,13 +126,19 @@ class PortfolioVisualizationService:
         
         if df_prices.empty: return None
 
-        # Normalizasyon: (Fiyat / İlk Fiyat) * 100
-        df_normalized = (df_prices / df_prices.iloc[0]) * 100
+        # --- HATALI KOD (ESKİSİ) ---
+        # df_normalized = (df_prices / df_prices.iloc[0]) * 100 
+        
+        # --- DÜZELTİLMİŞ KOD (YENİSİ) ---
+        # Her hisseyi kendi başladığı tarihteki fiyata böler
+        df_normalized = df_prices.apply(lambda x: (x / x.loc[x.first_valid_index()]) * 100)
 
         fig, ax = plt.subplots(figsize=(12, 6))
         
         for col in df_normalized.columns:
-            ax.plot(df_normalized.index, df_normalized[col], label=col, linewidth=2)
+            # Sadece verisi olan kısımları çiz (NaN kısımları atla)
+            valid_data = df_normalized[col].dropna()
+            ax.plot(valid_data.index, valid_data, label=col, linewidth=2)
             
         ax.set_title(f"Tüm Hisselerin Göreceli Performansı (Son {days} Gün)", fontsize=14)
         ax.set_ylabel("Getiri Endeksi (Başlangıç=100)")
