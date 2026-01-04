@@ -783,7 +783,7 @@ class ConsoleMenu:
             elif choice == '5':
                  print("Güncelleniyor...")
                  self.market_service.update_all_tickers()
-                 input("Bitti.")
+                 input("Bitti. Menüye dönmek için Enter...")
             elif choice == '6': self.visualization_menu()
             elif choice == '7': self.optimization_menu() 
             elif choice == '8': self.planning_menu() 
