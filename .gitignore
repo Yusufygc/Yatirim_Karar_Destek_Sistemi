@@ -1,5 +1,5 @@
 --- Python Standartları ---
-
+src/__pycache__/
 pycache/
 *.py[cod]
 *$py.class
@@ -48,7 +48,7 @@ CSV dosyalarını şimdilik gizli tutuyoruz (Veri setleri ve Raporlar)
 *.csv
 *.xlsx
 *.xls
-*.docx
+
 Veri Klasörleri (Eğer klasör yapısı kullanıyorsanız)
 
 dataSets/
@@ -78,5 +78,3 @@ Log Dosyaları
 
 .DS_Store
 Thumbs.db
-
-*.txt

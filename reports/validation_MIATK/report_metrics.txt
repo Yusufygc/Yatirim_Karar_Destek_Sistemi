@@ -1,0 +1,6 @@
+Validation Report for MIATK
+==============================
+RMSE: 1.1752
+MAPE: %2.3352
+Directional Accuracy: %46.6667
+Test Set Size: 91 days

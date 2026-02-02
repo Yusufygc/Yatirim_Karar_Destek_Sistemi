@@ -1,0 +1,6 @@
+Validation Report for BIMAS
+==============================
+RMSE: 13.4969
+MAPE: %1.9275
+Directional Accuracy: %56.6667
+Test Set Size: 91 days

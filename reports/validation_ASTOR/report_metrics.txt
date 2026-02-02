@@ -1,0 +1,6 @@
+Validation Report for ASTOR
+==============================
+RMSE: 3.0401
+MAPE: %2.2802
+Directional Accuracy: %61.1111
+Test Set Size: 91 days

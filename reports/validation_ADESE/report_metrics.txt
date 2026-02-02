@@ -1,0 +1,6 @@
+Validation Report for ADESE
+==============================
+RMSE: 0.5076
+MAPE: %14.3645
+Directional Accuracy: %44.4444
+Test Set Size: 91 days

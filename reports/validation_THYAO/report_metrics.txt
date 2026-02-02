@@ -1,0 +1,6 @@
+Validation Report for THYAO
+==============================
+RMSE: 10.7400
+MAPE: %2.6774
+Directional Accuracy: %52.2222
+Test Set Size: 91 days

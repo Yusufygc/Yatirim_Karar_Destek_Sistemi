@@ -1,0 +1,6 @@
+Validation Report for ENKAI
+==============================
+RMSE: 6.5773
+MAPE: %7.1280
+Directional Accuracy: %60.0000
+Test Set Size: 91 days

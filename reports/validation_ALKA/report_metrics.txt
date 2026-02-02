@@ -1,0 +1,6 @@
+Validation Report for ALKA
+==============================
+RMSE: 2.7214
+MAPE: %17.6516
+Directional Accuracy: %50.0000
+Test Set Size: 91 days

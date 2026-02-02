@@ -1,0 +1,6 @@
+Validation Report for EREGL
+==============================
+RMSE: 1.5158
+MAPE: %4.0765
+Directional Accuracy: %57.7778
+Test Set Size: 91 days

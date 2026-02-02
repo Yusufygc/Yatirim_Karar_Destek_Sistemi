@@ -1,0 +1,6 @@
+Validation Report for ASELS
+==============================
+RMSE: 26.0809
+MAPE: %11.1818
+Directional Accuracy: %53.3333
+Test Set Size: 91 days
